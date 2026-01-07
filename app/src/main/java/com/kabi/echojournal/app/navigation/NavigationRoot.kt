@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.kabi.echojournal.echos.presentation.create_echo.CreateEchoRoot
 import com.kabi.echojournal.echos.presentation.echos.EchosRoot
+import com.kabi.echojournal.echos.presentation.settings.SettingsRoot
 import com.kabi.echojournal.echos.presentation.util.toCreateEchoRoute
 
 @Composable
@@ -20,12 +21,20 @@ fun NavigationRoot(
             EchosRoot(
                 onNavigateToCreateEcho = { details ->
                     navController.navigate(details.toCreateEchoRoute())
+                },
+                onNavigateToSettings = {
+                    navController.navigate(NavigationRoute.Settings)
                 }
             )
         }
         composable<NavigationRoute.CreateEcho> {
             CreateEchoRoot(
                 onConfirmLeave = navController::navigateUp
+            )
+        }
+        composable<NavigationRoute.Settings> {
+            SettingsRoot(
+                onGoBack = navController::navigateUp
             )
         }
     }

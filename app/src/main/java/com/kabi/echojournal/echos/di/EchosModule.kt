@@ -4,12 +4,15 @@ import com.kabi.echojournal.echos.data.audio.AndroidAudioPlayer
 import com.kabi.echojournal.echos.data.echo.RoomEchoDataSource
 import com.kabi.echojournal.echos.data.recording.AndroidVoiceRecorder
 import com.kabi.echojournal.echos.data.recording.InternalRecordingStorage
+import com.kabi.echojournal.echos.data.settings.DataStoreSettings
 import com.kabi.echojournal.echos.domain.audio.AudioPlayer
 import com.kabi.echojournal.echos.domain.echo.EchoDataSource
 import com.kabi.echojournal.echos.domain.recording.RecordingStorage
 import com.kabi.echojournal.echos.domain.recording.VoiceRecorder
+import com.kabi.echojournal.echos.domain.settings.SettingsPreferences
 import com.kabi.echojournal.echos.presentation.create_echo.CreateEchoViewModel
 import com.kabi.echojournal.echos.presentation.echos.EchosViewModel
+import com.kabi.echojournal.echos.presentation.settings.SettingsViewModel
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
@@ -27,7 +30,9 @@ val echoModule = module {
     singleOf(::InternalRecordingStorage) bind RecordingStorage::class
     singleOf(::AndroidAudioPlayer) bind AudioPlayer::class
     singleOf(::RoomEchoDataSource) bind EchoDataSource::class
+    singleOf(::DataStoreSettings) bind SettingsPreferences::class
 
     viewModelOf(::EchosViewModel)
     viewModelOf(::CreateEchoViewModel)
+    viewModelOf(::SettingsViewModel)
 }
