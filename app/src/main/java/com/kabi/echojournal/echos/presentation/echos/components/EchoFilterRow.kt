@@ -2,7 +2,6 @@
 
 package com.kabi.echojournal.echos.presentation.echos.components
 
-import android.adservices.topics.Topic
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi

@@ -36,7 +36,7 @@ fun MoodItem(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Image(
-            imageVector = if (selected){
+            imageVector = if(selected) {
                 ImageVector.vectorResource(mood.iconSet.fill)
             } else {
                 ImageVector.vectorResource(mood.iconSet.outline)
@@ -49,7 +49,7 @@ fun MoodItem(
         Text(
             text = mood.title.asString(),
             style = MaterialTheme.typography.labelMedium,
-            color = if (selected){
+            color = if(selected) {
                 MaterialTheme.colorScheme.onSurface
             } else {
                 MaterialTheme.colorScheme.outline

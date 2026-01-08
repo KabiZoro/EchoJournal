@@ -45,7 +45,7 @@ fun EchoMoodPlayer(
     onTrackSizeAvailable: (TrackSizeInfo) -> Unit,
     modifier: Modifier = Modifier,
     amplitudeBarWidth: Dp = 5.dp,
-    amplitudeBarSpacing: Dp = 4.dp
+    amplitudeBarSpacing: Dp = 4.dp,
 ) {
     val iconTint = when (moodUi) {
         null -> MoodPrimary80
@@ -78,8 +78,8 @@ fun EchoMoodPlayer(
                 .height(IntrinsicSize.Min),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            EchoPlayBackButton(
-                playBackState = playbackState,
+            EchoPlaybackButton(
+                playbackState = playbackState,
                 onPlayClick = onPlayClick,
                 onPauseClick = onPauseClick,
                 colors = IconButtonDefaults.filledIconButtonColors(
@@ -102,19 +102,14 @@ fun EchoMoodPlayer(
                     )
                     .fillMaxHeight()
                     .onSizeChanged {
-                        if (it.width > 0){
+                        if(it.width > 0) {
                             onTrackSizeAvailable(
                                 TrackSizeInfo(
                                     trackWidth = it.width.toFloat(),
-                                    barWidth = with(density) {
-                                        amplitudeBarWidth.toPx()
-                                    },
-                                    spacing = with(density) {
-                                        amplitudeBarSpacing.toPx()
-                                    }
+                                    barWidth = with(density) { amplitudeBarWidth.toPx() },
+                                    spacing = with(density) { amplitudeBarSpacing.toPx() }
                                 )
                             )
-
                         }
                     }
             )
@@ -141,14 +136,14 @@ private fun EchoMoodPlayerPreview() {
             }
         }
         EchoMoodPlayer(
-            moodUi = MoodUi.SAD,
+            moodUi = MoodUi.STRESSED,
             playerProgress = { 0.3f },
-            playbackState = PlayBackState.PLAYING,
+            playbackState = PlayBackState.PAUSED,
             durationPlayed = 125.seconds,
             totalPlaybackDuration = 250.seconds,
             powerRatios = ratios,
-            onPlayClick = {},
             onPauseClick = {},
+            onPlayClick = {},
             modifier = Modifier
                 .fillMaxWidth(),
             onTrackSizeAvailable = {}

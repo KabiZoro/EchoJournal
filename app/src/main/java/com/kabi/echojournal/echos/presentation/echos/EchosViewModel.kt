@@ -1,5 +1,6 @@
 package com.kabi.echojournal.echos.presentation.echos
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kabi.echojournal.R
@@ -44,7 +45,8 @@ import kotlin.time.Duration.Companion.seconds
 class EchosViewModel(
     private val voiceRecorder: VoiceRecorder,
     private val audioPlayer: AudioPlayer,
-    private val echoDataSource: EchoDataSource
+    private val echoDataSource: EchoDataSource,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     companion object {
@@ -67,6 +69,7 @@ class EchosViewModel(
             if (!hasLoadedInitialData) {
                 observeFilters()
                 observeEchos()
+                fetchNavigationArgs()
                 hasLoadedInitialData = true
             }
         }
@@ -190,6 +193,19 @@ class EchosViewModel(
         }
     }
 
+    private fun fetchNavigationArgs() {
+        val startRecording = savedStateHandle["startRecording"] ?: false
+        if (startRecording){
+            _state.update {
+                it.copy(
+                    currentCaptureMethod = AudioCaptureMethod.STANDARD
+                )
+            }
+            requestAudioPermission()
+        }
+    }
+
+
     private fun observeEchos() {
         combine(
             filteredEchos,
@@ -296,7 +312,18 @@ class EchosViewModel(
             if (recordingDetails.duration < MIN_RECORDING_DURATION) {
                 eventChannel.send(EchosEvent.RecordingTooShort)
             } else {
-                eventChannel.send(EchosEvent.OnDoneRecording(recordingDetails))
+                eventChannel.send(EchosEvent.OnDoneRecording(
+                    details = recordingDetails.copy(
+                        // arbitrary track dimens to not make the app crash
+                        // when navigating and passing the amplitudes as an arg
+                        amplitudes = AmplitudeNormalizer.normalize(
+                            sourceAmplitudes = recordingDetails.amplitudes,
+                            trackWidth = 10_000f,
+                            barWidth = 20f,
+                            spacing = 15f
+                        )
+                    )
+                ))
             }
         }
     }

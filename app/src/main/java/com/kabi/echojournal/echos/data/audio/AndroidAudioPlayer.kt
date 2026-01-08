@@ -44,6 +44,8 @@ class AndroidAudioPlayer(
                         isPlaying = true
                     )
                 }
+                trackDuration()
+
                 setOnCompletionListener {
                     onCompletion()
                     stop()

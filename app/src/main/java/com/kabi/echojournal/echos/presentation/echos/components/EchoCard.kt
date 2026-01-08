@@ -24,6 +24,7 @@ import com.kabi.echojournal.core.presentation.util.defaultShadow
 import com.kabi.echojournal.echos.presentation.components.EchoMoodPlayer
 import com.kabi.echojournal.echos.presentation.echos.models.TrackSizeInfo
 import com.kabi.echojournal.echos.presentation.models.EchoUi
+import com.kabi.echojournal.echos.presentation.models.MoodUi
 import com.kabi.echojournal.echos.presentation.preview.PreviewModels
 
 @Composable
@@ -41,8 +42,7 @@ fun EchoCard(
             .defaultShadow(shape = RoundedCornerShape(8.dp))
     ) {
         Column(
-            modifier = Modifier
-                .padding(12.dp),
+            modifier = Modifier.padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Row(
@@ -52,8 +52,7 @@ fun EchoCard(
                     text = echoUi.title,
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier
-                        .weight(1f)
+                    modifier = Modifier.weight(1f)
                 )
                 Text(
                     text = echoUi.formattedRecordedAt,
@@ -74,7 +73,7 @@ fun EchoCard(
                 onTrackSizeAvailable = onTrackSizeAvailable
             )
 
-            if (!echoUi.note.isNullOrBlank()) {
+            if(!echoUi.note.isNullOrBlank()) {
                 EchoExpandableText(echoUi.note)
             }
 
@@ -94,10 +93,12 @@ fun EchoCard(
 private fun EchoCardPreview() {
     EchoJournalTheme {
         EchoCard(
-            echoUi = PreviewModels.echoUi,
+            echoUi = PreviewModels.echoUi.copy(
+                mood = MoodUi.EXCITED
+            ),
             onTrackSizeAvailable = {},
-            onPlayClick = {},
-            onPauseClick = {}
+            onPauseClick = {},
+            onPlayClick = {}
         )
     }
 }

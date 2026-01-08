@@ -19,15 +19,15 @@ import com.kabi.echojournal.echos.presentation.echos.models.PlayBackState
 import com.kabi.echojournal.echos.presentation.models.MoodUi
 
 @Composable
-fun EchoPlayBackButton(
-    playBackState: PlayBackState,
+fun EchoPlaybackButton(
+    playbackState: PlayBackState,
     onPlayClick: () -> Unit,
     onPauseClick: () -> Unit,
     colors: IconButtonColors,
     modifier: Modifier = Modifier
 ) {
     FilledIconButton(
-        onClick = when (playBackState) {
+        onClick = when (playbackState) {
             PlayBackState.PLAYING -> onPauseClick
             PlayBackState.PAUSED,
             PlayBackState.STOPPED -> onPlayClick
@@ -37,12 +37,12 @@ fun EchoPlayBackButton(
             .defaultShadow()
     ) {
         Icon(
-            imageVector = when(playBackState){
+            imageVector = when(playbackState){
                 PlayBackState.PLAYING -> Icons.Filled.Pause
                 PlayBackState.PAUSED,
                 PlayBackState.STOPPED -> Icons.Filled.PlayArrow
             },
-            contentDescription = when(playBackState){
+            contentDescription = when(playbackState){
                 PlayBackState.PLAYING -> stringResource(R.string.playing)
                 PlayBackState.PAUSED -> stringResource(R.string.paused)
                 PlayBackState.STOPPED -> stringResource(R.string.stopped)
@@ -53,10 +53,10 @@ fun EchoPlayBackButton(
 
 @Preview
 @Composable
-private fun EchoPlayBackButtonPreview() {
+private fun EchoPlaybackButtonPreview() {
     EchoJournalTheme {
-        EchoPlayBackButton(
-            playBackState = PlayBackState.PLAYING,
+        EchoPlaybackButton(
+            playbackState = PlayBackState.PLAYING,
             onPlayClick = {},
             onPauseClick = {},
             colors = IconButtonDefaults.filledIconButtonColors(

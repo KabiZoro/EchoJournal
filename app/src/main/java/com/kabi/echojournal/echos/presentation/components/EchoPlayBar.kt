@@ -1,7 +1,6 @@
 package com.kabi.echojournal.echos.presentation.components
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -39,7 +38,7 @@ fun EchoPlayBar(
         val amplitudeBarSpacingPx = amplitudeBarSpacing.toPx()
 
         val clipPath = Path()
-        
+
         powerRatios.forEachIndexed { i, ratio ->
             val height = ratio * size.height
 
@@ -62,7 +61,7 @@ fun EchoPlayBar(
                 cornerRadius = CornerRadius(100f)
             )
             clipPath.addRoundRect(roundRect)
-            
+
             drawRoundRect(
                 color = trackColor,
                 topLeft = topLeft,
@@ -71,7 +70,7 @@ fun EchoPlayBar(
             )
         }
 
-        clipPath(clipPath){
+        clipPath(clipPath) {
             drawRect(
                 color = trackFillColor,
                 size = Size(
@@ -93,12 +92,12 @@ private fun EchoPlayBarPreview() {
             }
         }
         EchoPlayBar(
-            amplitudeBarWidth = 3.dp,
-            amplitudeBarSpacing = 4.dp,
+            amplitudeBarSpacing = 3.dp,
+            amplitudeBarWidth = 4.dp,
             powerRatios = ratios,
             trackColor = MoodUi.SAD.colorSet.desaturated,
             trackFillColor = MoodUi.SAD.colorSet.vivid,
-            playerProgress = { 0.3f },
+            playerProgress = { 0.31f },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    
+
     <application
         android:name=".app.EchoJournalApp"
         android:allowBackup="false"
@@ -25,7 +25,30 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="com.kabi.CREATE_ECHO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--<data android:scheme="com.kabi.echojournal" />-->
+                <data
+                    android:host="echojournal.com"
+                    android:path="/echos"
+                    android:scheme="https" />
+            </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".app.widget.RecordEchoWidgetReceiver"
+            android:exported="true"
+            android:label="@string/create_new_entry_widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/record_echo_widget_info" />
+        </receiver>
+
     </application>
 
 </manifest>
