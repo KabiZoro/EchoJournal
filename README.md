@@ -32,11 +32,13 @@ All recordings and data remain **100% stored locally on-device**, ensuring compl
 
 ## 📸 Screenshots & Demo
 
-| Echoes Feed | Create Echo | Settings | App Widget |
-| :---: | :---: | :---: | :---: |
-| <img src="docs/screenshots/feed.png" width="200" alt="Echoes Feed" /> | <img src="docs/screenshots/create_echo.png" width="200" alt="Create Echo" /> | <img src="docs/screenshots/settings.png" width="200" alt="Settings" /> | <img src="docs/screenshots/widget.png" width="200" alt="App Widget" /> |
+| Echoes Dashboard | Voice Recording | Create Entry |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/echojournal_dashboard.png" width="220" alt="Echoes Dashboard" /> | <img src="docs/screenshots/echojournal_recording.png" width="220" alt="Voice Recording" /> | <img src="docs/screenshots/echojournal_new_entry.png" width="220" alt="Create Entry" /> |
 
-*(Place your screenshot images inside `docs/screenshots/` as `feed.png`, `create_echo.png`, `settings.png`, and `widget.png`)*
+| Quick Record Sheet | Settings | App Widget |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/echojournal_shortcut_recording.png" width="220" alt="Quick Record Sheet" /> | <img src="docs/screenshots/echojournal_settings.png" width="220" alt="Settings" /> | <img src="docs/screenshots/echojournal_widget.png" width="220" alt="App Widget" /> |
 
 ---
 
@@ -123,4 +125,4 @@ Contributions are welcome! To contribute:
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
