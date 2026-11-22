@@ -34,9 +34,9 @@ All recordings and data remain **100% stored locally on-device**, ensuring compl
 
 | Echoes Feed | Create Echo | Settings | App Widget |
 | :---: | :---: | :---: | :---: |
-| *(Add Feed Screenshot)* | *(Add Recording Screenshot)* | *(Add Settings Screenshot)* | *(Add Widget Screenshot)* |
+| <img src="docs/screenshots/feed.png" width="200" alt="Echoes Feed" /> | <img src="docs/screenshots/create_echo.png" width="200" alt="Create Echo" /> | <img src="docs/screenshots/settings.png" width="200" alt="Settings" /> | <img src="docs/screenshots/widget.png" width="200" alt="App Widget" /> |
 
-> 💡 *Tip: Add actual screenshots to your `/docs` folder and link them here to showcase your app UI.*
+*(Place your screenshot images inside `docs/screenshots/` as `feed.png`, `create_echo.png`, `settings.png`, and `widget.png`)*
 
 ---
 
