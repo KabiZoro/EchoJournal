@@ -1,6 +1,8 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
@@ -35,13 +37,15 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
         isCoreLibraryDesugaringEnabled = true
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         compose = true
         buildConfig = true
     }
+}
+
+kotlin {
+    compilerOptions.languageVersion.set(KotlinVersion.KOTLIN_2_3)
+    compilerOptions.jvmTarget.set(JvmTarget.JVM_11)
 }
 
 room {
@@ -80,6 +84,10 @@ dependencies {
 
     // Logging
     implementation(libs.timber)
+
+    // Icons
+    implementation("androidx.compose.material:material-icons-core:1.7.8")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
